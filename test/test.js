@@ -19,9 +19,13 @@ describe('jQuery', function () {
     })
 
     it('should able trigger an event', function (done) {
-      $(ele).on('click', function () {
-        done()
-      }).trigger('click')
+      $(ele)
+        .on('click', function () {
+          done()
+        })
+        .trigger('click', function () {
+          console.log('点击事件触发了')
+        })
     })
 
     after(function () {
@@ -32,5 +36,20 @@ describe('jQuery', function () {
 
   it('should able to request https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js', function (done) {
     // 使用 jQuery.ajax 请求 https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js，并验证是否拿到文件
+    $.ajax({
+      headers: { 'Content-Type': 'text/plain' },
+      async: true,
+      type: 'GET',
+      url:
+        'https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js',
+      success: function (res) {
+        console.log('success')
+        done()
+      },
+      error: function () {
+        console.log('error')
+        done()
+      }
+    })
   })
 })
