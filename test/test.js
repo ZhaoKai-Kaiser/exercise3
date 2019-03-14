@@ -36,18 +36,20 @@ describe('jQuery', function () {
 
   it('should able to request https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js', function (done) {
     // 使用 jQuery.ajax 请求 https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js，并验证是否拿到文件
+    let dataType = 'text' // html,text js文件内容将以纯文本格式返回
     $.ajax({
       headers: { 'Content-Type': 'text/plain' },
       async: true,
       type: 'GET',
+      dataType: dataType,
       url:
         'https://raw.githubusercontent.com/FE-star/exercise1/master/test/test.js',
       success: function (res) {
-        console.log('success')
+        console.log('success:', dataType)
         done()
       },
       error: function () {
-        console.log('error')
+        console.log('error: ', dataType)
         done()
       }
     })
