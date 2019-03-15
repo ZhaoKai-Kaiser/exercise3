@@ -5,9 +5,7 @@ node_js:
 
 addons:
   chrome: stable
-
+# http://karma-runner.github.io/1.0/plus/travis.html
 before_script:
   - 'export DISPLAY=:99.0'
   - 'sh -e /etc/init.d/xvfb start'
-
-script: karma start karma.conf.js --single-run
